@@ -6,15 +6,18 @@ import {connect} from 'react-redux';
 
 class Passengers extends Component {
 
-  addPassenger = (event) => {
+   addPassenger = (event) => {
+      this.props.dispatch({
+        type: 'SET_PASSENGER',
+        payload: event.target.value
+      });
+   }
+
+  displayPassenger = (event) => {
     this.props.dispatch({
       type: 'SET_PASSENGER',
       payload: event.target.value
     });
-  }
-
-  displayPassenger = () => {
-    
   }
 
   render() {
@@ -22,18 +25,16 @@ class Passengers extends Component {
       <div>
         <h2>Passengers</h2>
 
-        <input type="text" name="name" placeholder="Enter Name" onChange={this.addPassengers}/>
+        <input type="text" name="name" placeholder="Enter Name" onChange={this.addPassenger}/>
         <button>Add Passenger</button>
 
-        <ul>PASSENGER LIST:
-          <li>{this.props.passengers}</li>
-        </ul>
+        <ul>PASSENGER LIST: Goes Here</ul>
       
       </div>
     )
   }
 }
-const mapStateToProps = (reduxState) => ({
-  passengers: reduxState.passengers.passengers
+const mapStateToProps = (storeInstance) => ({
+  passengers: storeInstance.passengers
 });
 export default connect(mapStateToProps)(Passengers);

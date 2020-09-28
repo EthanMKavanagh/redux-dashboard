@@ -10,13 +10,14 @@ class Dashboard extends Component {
       <div>
         <h2>Dashboard</h2>
         
-        <p>SPEED: GOES HERE</p>
-        <p>PASSENGER COUNT: {this.props.speed}</p>
+        <p>SPEED: {this.props.speed}</p>
+        <p>PASSENGER COUNT: {this.props.passengers.length}</p>
       </div>
     )
   }
 }
 const mapStateToProps = (storeInstance) => ({
-  speed: storeInstance.speed
+  speed: storeInstance.speed,
+  passengers: storeInstance.passengers
 });
 export default connect(mapStateToProps)(Dashboard);
