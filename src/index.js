@@ -10,7 +10,8 @@ import Dashboard from './components/Dashboard/Dashboard';
 // put your reducers here!
 const passengers = (state = [], action) => {
   if (action.type === 'SET_PASSENGER') {
-    return [...state, action.payload]
+    console.log('action.payload:', action.payload);
+    return [...state, action.payload];
   }
 
   return state;
