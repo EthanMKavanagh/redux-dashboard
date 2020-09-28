@@ -13,21 +13,24 @@ class Passengers extends Component {
     });
   }
 
-  displayPassenger = () => {
-
-  }
-
   render() {
     return (
       <div>
         <h2>Passengers</h2>
 
         <input type="text" name="name" placeholder="Enter Name" onChange={this.addPassenger}/>
-        <button onClick={this.displayPassenger}>Add Passenger</button>
+        <button
+          // onClick={this.addPassenger}
+          // Implementing onChange={() => this.addPassenger}
+          // How do you update ul on an onClick rather than an onChange? Can't grab the input value
+          // through event.target.value inside of an onClick. The ul displays every time the input is changed
+        >
+          Add Passenger
+        </button>
 
         <ul>PASSENGER:
-          {this.props.passengers.map(passenger =>
-            <li>{passenger}</li>
+          {this.props.passengers.map((passenger, i) =>
+            <li key={i}>{passenger}</li>
           )}
         </ul>
       
