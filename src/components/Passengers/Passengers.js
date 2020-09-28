@@ -6,10 +6,20 @@ import {connect} from 'react-redux';
 
 class Passengers extends Component {
 
+  state = {
+    passenger: ''
+  }
+
   addPassenger = (event) => {
+    this.setState({
+      passenger: event.target.value
+    });
+  }
+
+  displayPassenger = () => {
     this.props.dispatch({
       type: 'SET_PASSENGER',
-      payload: event.target.value
+      payload: this.state.passenger
     });
   }
 
@@ -19,14 +29,7 @@ class Passengers extends Component {
         <h2>Passengers</h2>
 
         <input type="text" name="name" placeholder="Enter Name" onChange={this.addPassenger}/>
-        <button
-          // onClick={this.addPassenger}
-          // Implementing onChange={() => this.addPassenger}
-          // How do you update ul on an onClick rather than an onChange? Can't grab the input value
-          // through event.target.value inside of an onClick. The ul displays every time the input is changed
-        >
-          Add Passenger
-        </button>
+        <button onClick={this.displayPassenger}>Add Passenger</button>
 
         <ul>PASSENGER:
           {this.props.passengers.map((passenger, i) =>

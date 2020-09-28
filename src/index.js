@@ -5,7 +5,6 @@ import App from './components/App/App';
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
-import Dashboard from './components/Dashboard/Dashboard';
 
 // put your reducers here!
 const passengers = (state = [], action) => {
